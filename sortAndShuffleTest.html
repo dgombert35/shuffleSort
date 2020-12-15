@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Damien Gombert test</title>
+	<link rel="stylesheet" type="text/css" href="sortAndShuffle.css"  />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="ha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script type="text/javascript">
+			var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+			var i = 0;
+	</script>
+	
+</head>
+	<body>
+		<div class="sortAndShuffle">
+			<div class="title">
+				<h1>Shuffle and Sort</h1>
+			</div>
+			<div class="backgroundLigth">
+				<div class="content">
+					<div class="cardsButtonsContent container">
+						<ul class="ulElement row">
+							<script>
+								while(i < numbersArray.length){
+		
+									document.write("<div class='cardNumber col-md-4'><p class='color' id='cardNumber"+numbersArray[i]+"'></p><p class='paraNumber'>"+numbersArray[i]+"		</p></div>");
+									i++;
+								}
+								
+							</script>
+						</ul>
+					</div>
+					<div class="buttons">
+						<div class="shuffleButton">
+							<button class="buttonShuffle" id="shuffle" onclick="shuffleNodes()">SHUFFLE</button>
+						</div>
+						<div class="sortButton">
+							<button class="buttonSort" id="sort" onclick="sortList()">SORT</button>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript">
+
+					var myArray = ['#2B8EAD', '#333333', '#6F98A8', '#BFBFBF', '#2F454E', '#72C3DC'];
+					for(let i = 0; i<numbersArray.length; i++){
+						document.getElementById("cardNumber"+numbersArray[i]).style.backgroundColor = myArray[Math.floor(Math.random() * myArray.length)];
+					}
+	
+					var ul = document.querySelector('ul');
+	
+    				function shuffleNodes() {
+						for (var i = ul.children.length; i >= 0; i--) {
+						    ul.appendChild(ul.children[Math.random() * i | 0]);
+						}
+    				}
+	
+   					function sortList() {
+   					   var list, i, sortFlag, divEle, sorted;
+   					   list = document.querySelector(".ulElement");
+   					   sortFlag = true;
+   					   while (sortFlag) {
+   					      sortFlag = false;
+   					      divEle = list.getElementsByTagName("DIV");
+   					      for (i = 0; i < divEle.length - 1; i++) {
+   					         sorted = false;
+   					         if ( divEle[i].innerHTML.toLowerCase() > divEle[i + 1].innerHTML.toLowerCase() ) {
+   					            sorted = true;
+   					            break;
+   					         }
+   					      }
+   					      if (sorted) {
+   					         divEle[i].parentNode.insertBefore(divEle[i + 1], divEle[i]);
+   					         sortFlag = true;
+   					      }
+   					   }
+   					}
+				</script>
+				<div class="insertName">
+					<p>Shuffle and sort by Damien Gombert</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
